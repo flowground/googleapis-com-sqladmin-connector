@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Instance truncate log request.",
+            "properties": {
+                "truncateLogContext": {
+                    "description": "Contains details about the truncate log operation.",
+                    "properties": {
+                        "kind": {
+                            "default": "sql#truncateLogContext",
+                            "description": "This is always sql#truncateLogContext.",
+                            "type": "string"
+                        },
+                        "logType": {
+                            "description": "The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

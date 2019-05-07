@@ -1,0 +1,65 @@
+{
+    "type": "object",
+    "properties": {
+        "host": {
+            "type": "string"
+        },
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A Cloud SQL user resource.",
+            "properties": {
+                "etag": {
+                    "description": "This field is deprecated and will be removed from a future version of the API.",
+                    "type": "string"
+                },
+                "host": {
+                    "description": "The host name from which the user can connect. For insert operations, host defaults to an empty string. For update operations, host is specified as part of the request URL. The host name cannot be updated after insertion.",
+                    "type": "string"
+                },
+                "instance": {
+                    "description": "The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for update since it is already specified on the URL.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "sql#user",
+                    "description": "This is always sql#user.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the user in the Cloud SQL instance. Can be omitted for update since it is already specified in the URL.",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "The password for the user.",
+                    "type": "string"
+                },
+                "project": {
+                    "description": "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for update since it is already specified on the URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "database": {
+            "required": true,
+            "type": "string"
+        },
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

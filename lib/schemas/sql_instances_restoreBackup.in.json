@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Database instance restore backup request.",
+            "properties": {
+                "restoreBackupContext": {
+                    "description": "Parameters required to perform the restore backup operation.",
+                    "properties": {
+                        "backupRunId": {
+                            "description": "The ID of the backup run to restore from.",
+                            "format": "int64",
+                            "type": "string"
+                        },
+                        "instanceId": {
+                            "description": "The ID of the instance that the backup was taken from.",
+                            "type": "string"
+                        },
+                        "kind": {
+                            "default": "sql#restoreBackupContext",
+                            "description": "This is always sql#restoreBackupContext.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Database instance export request.",
+            "properties": {
+                "exportContext": {
+                    "description": "Contains details about the export operation.",
+                    "properties": {
+                        "csvExportOptions": {
+                            "description": "Options for exporting data as CSV.",
+                            "properties": {
+                                "selectQuery": {
+                                    "description": "The select query used to extract the data.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "databases": {
+                            "description": "Databases to be exported.\nMySQL instances: If fileType is SQL and no database is specified, all databases are exported, except for the mysql system database. If fileType is CSV, you can specify one database, either by using this property or by using the csvExportOptions.selectQuery property, which takes precedence over this property.\nPostgreSQL instances: Specify exactly one database to be exported. If fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery property.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "fileType": {
+                            "description": "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data.",
+                            "type": "string"
+                        },
+                        "kind": {
+                            "default": "sql#exportContext",
+                            "description": "This is always sql#exportContext.",
+                            "type": "string"
+                        },
+                        "sqlExportOptions": {
+                            "description": "Options for exporting data as SQL statements.",
+                            "properties": {
+                                "mysqlExportOptions": {
+                                    "description": "Options for exporting from MySQL.",
+                                    "properties": {
+                                        "masterData": {
+                                            "description": "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored.",
+                                            "format": "int32",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "schemaOnly": {
+                                    "description": "Export only schemas.",
+                                    "type": "boolean"
+                                },
+                                "tables": {
+                                    "description": "Tables to export, or that were exported, from the specified database. If you specify tables, specify one and only one database. For PostgreSQL instances, you can specify only one table.",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "uri": {
+                            "description": "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form gs://bucketName/fileName. If the file already exists, the requests succeeds, but the operation fails. If fileType is SQL and the filename ends with .gz, the contents are compressed.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

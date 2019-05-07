@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "SslCerts create ephemeral certificate request.",
+            "properties": {
+                "public_key": {
+                    "description": "PEM encoded public key to include in the signed certificate.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

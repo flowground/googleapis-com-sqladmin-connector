@@ -1,0 +1,798 @@
+{
+    "title": "Cloud SQL Admin",
+    "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
+    "docsUrl": "https://cloud.google.com/sql/docs/reference/latest",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/sqladmin/v1beta4/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/sql/v1beta4",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "sql_flags_list": {
+            "main": "./lib/actions/sql_flags_list.js",
+            "title": "List all available database flags for Cloud SQL instances.",
+            "description": "List all available database flags for Cloud SQL instances.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_flags_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_list": {
+            "main": "./lib/actions/sql_instances_list.js",
+            "title": "Lists instances under a given project in the alphabetical order of the instance name.",
+            "description": "Lists instances under a given project in the alphabetical order of the instance name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_insert": {
+            "main": "./lib/actions/sql_instances_insert.js",
+            "title": "Creates a new Cloud SQL instance.",
+            "description": "Creates a new Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_delete": {
+            "main": "./lib/actions/sql_instances_delete.js",
+            "title": "Deletes a Cloud SQL instance.",
+            "description": "Deletes a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_get": {
+            "main": "./lib/actions/sql_instances_get.js",
+            "title": "Retrieves a resource containing information about a Cloud SQL instance.",
+            "description": "Retrieves a resource containing information about a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_patch": {
+            "main": "./lib/actions/sql_instances_patch.js",
+            "title": "Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.. This method supports patch semantics.",
+            "description": "Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.. This method supports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_update": {
+            "main": "./lib/actions/sql_instances_update.js",
+            "title": "Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.",
+            "description": "Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_addServerCa": {
+            "main": "./lib/actions/sql_instances_addServerCa.js",
+            "title": "Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a certificate rotation. If a CA version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one CA version waiting to be rotated in.",
+            "description": "Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a certificate rotation. If a CA version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one CA version waiting to be rotated in.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_addServerCa.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_backupRuns_list": {
+            "main": "./lib/actions/sql_backupRuns_list.js",
+            "title": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the backup initiation time.",
+            "description": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the backup initiation time.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_backupRuns_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_backupRuns_insert": {
+            "main": "./lib/actions/sql_backupRuns_insert.js",
+            "title": "Creates a new backup run on demand. This method is applicable only to Second Generation instances.",
+            "description": "Creates a new backup run on demand. This method is applicable only to Second Generation instances.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_backupRuns_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_backupRuns_delete": {
+            "main": "./lib/actions/sql_backupRuns_delete.js",
+            "title": "Deletes the backup taken by a backup run.",
+            "description": "Deletes the backup taken by a backup run.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_backupRuns_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_backupRuns_get": {
+            "main": "./lib/actions/sql_backupRuns_get.js",
+            "title": "Retrieves a resource containing information about a backup run.",
+            "description": "Retrieves a resource containing information about a backup run.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_backupRuns_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_clone": {
+            "main": "./lib/actions/sql_instances_clone.js",
+            "title": "Creates a Cloud SQL instance as a clone of the source instance.",
+            "description": "Creates a Cloud SQL instance as a clone of the source instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_clone.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_sslCerts_createEphemeral": {
+            "main": "./lib/actions/sql_sslCerts_createEphemeral.js",
+            "title": "Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database.",
+            "description": "Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_sslCerts_createEphemeral.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_databases_list": {
+            "main": "./lib/actions/sql_databases_list.js",
+            "title": "Lists databases in the specified Cloud SQL instance.",
+            "description": "Lists databases in the specified Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_databases_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_databases_insert": {
+            "main": "./lib/actions/sql_databases_insert.js",
+            "title": "Inserts a resource containing information about a database inside a Cloud SQL instance.",
+            "description": "Inserts a resource containing information about a database inside a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_databases_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_databases_delete": {
+            "main": "./lib/actions/sql_databases_delete.js",
+            "title": "Deletes a database from a Cloud SQL instance.",
+            "description": "Deletes a database from a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_databases_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_databases_get": {
+            "main": "./lib/actions/sql_databases_get.js",
+            "title": "Retrieves a resource containing information about a database inside a Cloud SQL instance.",
+            "description": "Retrieves a resource containing information about a database inside a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_databases_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_databases_patch": {
+            "main": "./lib/actions/sql_databases_patch.js",
+            "title": "Updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.",
+            "description": "Updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_databases_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_databases_update": {
+            "main": "./lib/actions/sql_databases_update.js",
+            "title": "Updates a resource containing information about a database inside a Cloud SQL instance.",
+            "description": "Updates a resource containing information about a database inside a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_databases_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_demoteMaster": {
+            "main": "./lib/actions/sql_instances_demoteMaster.js",
+            "title": "Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.",
+            "description": "Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_demoteMaster.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_export": {
+            "main": "./lib/actions/sql_instances_export.js",
+            "title": "Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump or CSV file.",
+            "description": "Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump or CSV file.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_export.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_failover": {
+            "main": "./lib/actions/sql_instances_failover.js",
+            "title": "Failover the instance to its failover replica instance.",
+            "description": "Failover the instance to its failover replica instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_failover.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_import": {
+            "main": "./lib/actions/sql_instances_import.js",
+            "title": "Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.",
+            "description": "Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_import.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_listServerCas": {
+            "main": "./lib/actions/sql_instances_listServerCas.js",
+            "title": "Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously rotated out.",
+            "description": "Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously rotated out.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_listServerCas.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_promoteReplica": {
+            "main": "./lib/actions/sql_instances_promoteReplica.js",
+            "title": "Promotes the read replica instance to be a stand-alone Cloud SQL instance.",
+            "description": "Promotes the read replica instance to be a stand-alone Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_promoteReplica.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_resetSslConfig": {
+            "main": "./lib/actions/sql_instances_resetSslConfig.js",
+            "title": "Deletes all client certificates and generates a new server SSL certificate for the instance.",
+            "description": "Deletes all client certificates and generates a new server SSL certificate for the instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_resetSslConfig.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_restart": {
+            "main": "./lib/actions/sql_instances_restart.js",
+            "title": "Restarts a Cloud SQL instance.",
+            "description": "Restarts a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_restart.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_restoreBackup": {
+            "main": "./lib/actions/sql_instances_restoreBackup.js",
+            "title": "Restores a backup of a Cloud SQL instance.",
+            "description": "Restores a backup of a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_restoreBackup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_rotateServerCa": {
+            "main": "./lib/actions/sql_instances_rotateServerCa.js",
+            "title": "Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with the addServerCA method.",
+            "description": "Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with the addServerCA method.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_rotateServerCa.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_sslCerts_list": {
+            "main": "./lib/actions/sql_sslCerts_list.js",
+            "title": "Lists all of the current SSL certificates for the instance.",
+            "description": "Lists all of the current SSL certificates for the instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_sslCerts_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_sslCerts_insert": {
+            "main": "./lib/actions/sql_sslCerts_insert.js",
+            "title": "Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.",
+            "description": "Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_sslCerts_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_sslCerts_delete": {
+            "main": "./lib/actions/sql_sslCerts_delete.js",
+            "title": "Deletes the SSL certificate. For First Generation instances, the certificate remains valid until the instance is restarted.",
+            "description": "Deletes the SSL certificate. For First Generation instances, the certificate remains valid until the instance is restarted.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_sslCerts_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_sslCerts_get": {
+            "main": "./lib/actions/sql_sslCerts_get.js",
+            "title": "Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.",
+            "description": "Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_sslCerts_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_startReplica": {
+            "main": "./lib/actions/sql_instances_startReplica.js",
+            "title": "Starts the replication in the read replica instance.",
+            "description": "Starts the replication in the read replica instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_startReplica.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_stopReplica": {
+            "main": "./lib/actions/sql_instances_stopReplica.js",
+            "title": "Stops the replication in the read replica instance.",
+            "description": "Stops the replication in the read replica instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_stopReplica.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_instances_truncateLog": {
+            "main": "./lib/actions/sql_instances_truncateLog.js",
+            "title": "Truncate MySQL general and slow query log tables",
+            "description": "Truncate MySQL general and slow query log tables",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_instances_truncateLog.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_users_delete": {
+            "main": "./lib/actions/sql_users_delete.js",
+            "title": "Deletes a user from a Cloud SQL instance.",
+            "description": "Deletes a user from a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_users_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_users_list": {
+            "main": "./lib/actions/sql_users_list.js",
+            "title": "Lists users in the specified Cloud SQL instance.",
+            "description": "Lists users in the specified Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_users_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_users_insert": {
+            "main": "./lib/actions/sql_users_insert.js",
+            "title": "Creates a new user in a Cloud SQL instance.",
+            "description": "Creates a new user in a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_users_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_users_update": {
+            "main": "./lib/actions/sql_users_update.js",
+            "title": "Updates an existing user in a Cloud SQL instance.",
+            "description": "Updates an existing user in a Cloud SQL instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_users_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_operations_list": {
+            "main": "./lib/actions/sql_operations_list.js",
+            "title": "Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time.",
+            "description": "Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_operations_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_operations_get": {
+            "main": "./lib/actions/sql_operations_get.js",
+            "title": "Retrieves an instance operation that has been performed on an instance.",
+            "description": "Retrieves an instance operation that has been performed on an instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_operations_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sql_tiers_list": {
+            "main": "./lib/actions/sql_tiers_list.js",
+            "title": "Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-standard-1. For related information, see Pricing.",
+            "description": "Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-standard-1. For related information, see Pricing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sql_tiers_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

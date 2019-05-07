@@ -1,0 +1,69 @@
+{
+    "type": "object",
+    "properties": {
+        "database": {
+            "required": true,
+            "type": "string"
+        },
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents a SQL database on the Cloud SQL instance.",
+            "properties": {
+                "charset": {
+                    "description": "The MySQL charset value.",
+                    "type": "string"
+                },
+                "collation": {
+                    "description": "The MySQL collation value.",
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "This field is deprecated and will be removed from a future version of the API.",
+                    "type": "string"
+                },
+                "instance": {
+                    "description": "The name of the Cloud SQL instance. This does not include the project ID.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "sql#database",
+                    "description": "This is always sql#database.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.",
+                    "type": "string"
+                },
+                "project": {
+                    "description": "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "The URI of this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Database instance clone request.",
+            "properties": {
+                "cloneContext": {
+                    "description": "Contains details about the clone operation.",
+                    "properties": {
+                        "binLogCoordinates": {
+                            "description": "Binary log coordinates, if specified, identify the position up to which the source instance should be cloned. If not specified, the source instance is cloned up to the most recent binary log coordinates.",
+                            "properties": {
+                                "binLogFileName": {
+                                    "description": "Name of the binary log file for a Cloud SQL instance.",
+                                    "type": "string"
+                                },
+                                "binLogPosition": {
+                                    "description": "Position (offset) within the binary log file.",
+                                    "format": "int64",
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "default": "sql#binLogCoordinates",
+                                    "description": "This is always sql#binLogCoordinates.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "destinationInstanceName": {
+                            "description": "Name of the Cloud SQL instance to be created as a clone.",
+                            "type": "string"
+                        },
+                        "kind": {
+                            "default": "sql#cloneContext",
+                            "description": "This is always sql#cloneContext.",
+                            "type": "string"
+                        },
+                        "pitrTimestampMs": {
+                            "description": "Reserved for future use.",
+                            "format": "int64",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

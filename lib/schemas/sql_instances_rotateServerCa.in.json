@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Rotate Server CA request.",
+            "properties": {
+                "rotateServerCaContext": {
+                    "description": "Contains details about the rotate server CA operation.",
+                    "properties": {
+                        "kind": {
+                            "default": "sql#rotateServerCaContext",
+                            "description": "This is always sql#rotateServerCaContext.",
+                            "type": "string"
+                        },
+                        "nextVersion": {
+                            "description": "The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server CA version.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

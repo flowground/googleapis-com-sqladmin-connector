@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "instance": {
+            "required": true,
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Database demote master request.",
+            "properties": {
+                "demoteMasterContext": {
+                    "description": "Contains details about the demoteMaster operation.",
+                    "properties": {
+                        "kind": {
+                            "default": "sql#demoteMasterContext",
+                            "description": "This is always sql#demoteMasterContext.",
+                            "type": "string"
+                        },
+                        "masterInstanceName": {
+                            "description": "The name of the instance which will act as on-premises master in the replication setup.",
+                            "type": "string"
+                        },
+                        "replicaConfiguration": {
+                            "description": "Configuration specific to read-replicas replicating from the on-premises master.",
+                            "properties": {
+                                "kind": {
+                                    "default": "sql#demoteMasterConfiguration",
+                                    "description": "This is always sql#demoteMasterConfiguration.",
+                                    "type": "string"
+                                },
+                                "mysqlReplicaConfiguration": {
+                                    "description": "MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named master.info in the data directory.",
+                                    "properties": {
+                                        "caCertificate": {
+                                            "description": "PEM representation of the trusted CA's x509 certificate.",
+                                            "type": "string"
+                                        },
+                                        "clientCertificate": {
+                                            "description": "PEM representation of the slave's x509 certificate.",
+                                            "type": "string"
+                                        },
+                                        "clientKey": {
+                                            "description": "PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate. The format of the slave's private key can be either PKCS #1 or PKCS #8.",
+                                            "type": "string"
+                                        },
+                                        "kind": {
+                                            "default": "sql#demoteMasterMysqlReplicaConfiguration",
+                                            "description": "This is always sql#demoteMasterMysqlReplicaConfiguration.",
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "description": "The password for the replication connection.",
+                                            "type": "string"
+                                        },
+                                        "username": {
+                                            "description": "The username for the replication connection.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "verifyGtidConsistency": {
+                            "description": "Verify GTID consistency for demote operation. Default value: True. Second Generation instances only. Setting this flag to false enables you to bypass GTID consistency check between on-premises master and Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication failures. Change the value only if you know the reason for the GTID divergence and are confident that doing so will not cause any replication issues.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
